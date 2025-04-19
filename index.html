@@ -1,64 +1,29 @@
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Previsão do Tempo - 7 Dias</title>
-    <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        .city {
-            margin: 20px 0;
-        }
-        .forecast {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-        }
-        .day {
-            background: #222;
-            padding: 10px;
-            border-radius: 8px;
-            width: 130px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Previsão do Tempo - 7 Dias</h1>
-
-    <div class="city" id="Cananéia"><h2>Cananéia</h2><div class="forecast" id="forecast-Cananéia"></div></div><div class="city" id="Iguape"><h2>Iguape</h2><div class="forecast" id="forecast-Iguape"></div></div><div class="city" id="IlhaComprida"><h2>Ilha Comprida</h2><div class="forecast" id="forecast-IlhaComprida"></div></div>
-
-    <script>
-        const apiKey = 'c9ebb63d5d0e47e19fe151222251904';
-        const cidades = [{'nome': 'Cananéia', 'lat': -25.0144, 'lon': -47.9297}, {'nome': 'Iguape', 'lat': -24.7062, 'lon': -47.5537}, {'nome': 'Ilha Comprida', 'lat': -24.7305, 'lon': -47.5372}];
-
-        async function buscarPrevisao(cidade) {
-            const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${cidade.lat},${cidade.lon}&days=7&lang=pt`;
-            const res = await fetch(url);
-            const dados = await res.json();
-
-            const container = document.getElementById(`forecast-${cidade.nome.replace(/\s/g, '')}`);
-            dados.forecast.forecastday.forEach(dia => {
-                const date = new Date(dia.date);
-                const options = { weekday: 'short', day: '2-digit', month: '2-digit' };
-                const card = document.createElement('div');
-                card.className = 'day';
-                card.innerHTML = `
-                    <div><strong>${date.toLocaleDateString('pt-BR', options)}</strong></div>
-                    <img src="https:${dia.day.condition.icon}" alt="">
-                    <div>${dia.day.mintemp_c.toFixed(1)}°C / ${dia.day.maxtemp_c.toFixed(1)}°C</div>
-                    <div style="font-size: 0.8em;">${dia.day.condition.text}</div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        cidades.forEach(buscarPrevisao);
-    </script>
-</body>
-</html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Previsão do Tempo</title>
+        <style>
+            body {{
+                font-family: Arial, sans-serif;
+                background-color: #000;
+                color: white;
+                text-align: center;
+            }}
+            .container {{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }}
+            .card {{
+                background-color: #222;
+                border-radius: 10px;
+                padding: 10px;
+                width: 120px;
+            }}
+        </style>
+    </head>
+    <body>
+        <h1>Previsão do Tempo - 7 Dias</h1>
+    <h2>Cananéia</h2><div class='container'></div><h2>Iguape</h2><div class='container'></div><h2>Ilha Comprida</h2><div class='container'></div></body></html>
