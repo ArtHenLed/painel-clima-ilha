@@ -2,7 +2,7 @@ import requests
 from datetime import datetime
 import os
 
-API_KEY = os.getenv("WEATHER_API_KEY") or "SUA_CHAVE_API"
+API_KEY = "c9ebb63d5d0e47e19fe151222251904"
 CIDADES = {
     "Cananéia": "Cananéia",
     "Iguape": "Iguape",
@@ -27,12 +27,15 @@ TRADUCOES_CONDICOES = {
     "Partly cloudy": "Parcialmente nublado",
     "Cloudy": "Nublado",
     "Overcast": "Encoberto",
-    "Mist": "Névoa",
-    "Patchy rain possible": "Possibilidade de chuva fraca",
-    "Patchy rain nearby": "Chuva fraca nas proximidades",
+    "Mist": "Neblina",
+    "Patchy rain nearby": "Chuva isolada",
+    "Patchy light rain": "Garoa isolada",
+    "Light rain": "Chuva leve",
     "Moderate rain": "Chuva moderada",
     "Heavy rain": "Chuva forte",
-    "Light rain": "Chuva leve",
+    "Thunderstorm": "Trovoada",
+    "Snow": "Neve",
+    "Patchy rain possible": "Possibilidade de chuva fraca",
     "Thundery outbreaks possible": "Possibilidade de trovoadas",
     "Fog": "Nevoeiro",
     "Freezing fog": "Nevoeiro congelante",
@@ -48,10 +51,8 @@ TRADUCOES_CONDICOES = {
     "Moderate or heavy sleet": "Granizo moderado ou forte",
     "Torrential rain shower": "Chuva torrencial",
     "Patchy freezing drizzle possible": "Possibilidade de garoa congelante",
-    "Patchy light snow": "Neve leve localizada",
     "Patchy moderate snow": "Neve moderada localizada",
     "Patchy heavy snow": "Neve forte localizada",
-    "Patchy light rain": "Chuva leve localizada",
     "Patchy moderate rain": "Chuva moderada localizada",
     "Patchy heavy rain": "Chuva forte localizada",
     "Light rain shower": "Pancada leve de chuva",
