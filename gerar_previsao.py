@@ -17,6 +17,11 @@ def obter_previsao(cidade_nome, cidade_id):
     resposta = requests.get(url)
     dados = resposta.json()
     html = ""
+
+    if "forecast" not in dados:
+        print(f"Erro na API para {cidade_nome}: {dados}")
+        return ""
+
     for dia in dados["forecast"]["forecastday"]:
         data = datetime.strptime(dia["date"], "%Y-%m-%d").strftime("%a., %d/%m")
         condicao = dia["day"]["condition"]["text"]
@@ -34,20 +39,45 @@ def obter_previsao(cidade_nome, cidade_id):
     return html
 
 def gerar_html():
-    with open("index.html", "w", encoding="utf-8") as f:
-        f.write("""
-        <html><head><meta charset="utf-8"><title>Previsão do Tempo</title>
+    html = """
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Previsão do Tempo</title>
         <style>
-        body { background-color: #000; color: #fff; font-family: sans-serif; text-align: center; }
-        .card { display: inline-block; background: #222; margin: 10px; padding: 10px; border-radius: 8px; width: 120px; }
-        </style></head><body>
+            body {{
+                font-family: Arial, sans-serif;
+                background-color: #000;
+                color: white;
+                text-align: center;
+            }}
+            .container {{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }}
+            .card {{
+                background-color: #222;
+                border-radius: 10px;
+                padding: 10px;
+                width: 120px;
+            }}
+        </style>
+    </head>
+    <body>
         <h1>Previsão do Tempo - 7 Dias</h1>
-        """)
-        for cidade, cid_id in CIDADES.items():
-            f.write(f"<h2>{cidade}</h2><div>")
-            f.write(obter_previsao(cidade, cid_id))
-            f.write("</div>")
-        f.write("</body></html>")
+    """
+
+    for cidade, cid_id in CIDADES.items():
+        html += f"<h2>{cidade}</h2><div class='container'>"
+        html += obter_previsao(cidade, cid_id)
+        html += "</div>"
+
+    html += "</body></html>"
+
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(html)
 
 if __name__ == "__main__":
     gerar_html()
