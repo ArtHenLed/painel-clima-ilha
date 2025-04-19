@@ -1,76 +1,193 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Previsão do Tempo - 7 Dias</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-      padding: 20px;
-      margin: 0;
-      overflow-x: hidden;
-    }
 
-    h1 {
-      font-size: 42px;
-      margin-bottom: 30px;
-    }
-
-    h2 {
-      font-size: 32px;
-      margin-top: 40px;
-      margin-bottom: 20px;
-    }
-
-    .cidade {
-      margin-bottom: 60px;
-    }
-
-    .card {
-      display: inline-block;
-      width: 140px;
-      margin: 10px;
-      padding: 10px;
-      background-color: #111;
-      border-radius: 10px;
-      text-align: center;
-    }
-
-    .card img {
-      margin-bottom: 8px;
-    }
-
-    .card p {
-      margin: 6px 0;
-      font-size: 18px;
-    }
-
-    @media screen and (max-width: 1152px) {
-      .card {
-        width: 120px;
-        margin: 6px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <h1>Previsão do Tempo - 7 Dias</h1>
-
-  <div class="cidade">
-    <h2>Cananéia</h2>
-    <!-- Os cards da previsão de Cananéia serão inseridos automaticamente pelo Python -->
-  </div>
-
-  <div class="cidade">
-    <h2>Iguape</h2>
-    <!-- Os cards da previsão de Iguape serão inseridos automaticamente pelo Python -->
-  </div>
-
-  <div class="cidade">
-    <h2>Ilha Comprida</h2>
-    <!-- Os cards da previsão de Ilha Comprida serão inseridos automaticamente pelo Python -->
-  </div>
-</body>
-</html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Previsão do Tempo - 7 Dias</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #000;
+                color: #fff;
+                padding: 30px;
+            }
+            h1 {
+                font-size: 42px;
+                margin-bottom: 20px;
+            }
+            h2 {
+                font-size: 32px;
+                margin-top: 30px;
+            }
+            .cidade {
+                margin-bottom: 40px;
+            }
+            .card {
+                display: inline-block;
+                width: 120px;
+                margin: 10px;
+                padding: 10px;
+                background-color: #111;
+                border-radius: 8px;
+                text-align: center;
+            }
+            .card img {
+                margin-bottom: 5px;
+            }
+            .card p {
+                margin: 4px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Previsão do Tempo - 7 Dias</h1>
+    <div class="cidade"><h2>Cananéia</h2>
+        <div class="card">
+            <p><strong>Sábado, 19/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/302.png" alt="Chuva moderada" width="48">
+            <p>20.6°C / 31.5°C</p>
+            <p>Chuva moderada</p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Domingo, 20/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/176.png" alt="Chuvas isoladas nas proximidades" width="48">
+            <p>19.0°C / 21.0°C</p>
+            <p>Chuvas isoladas nas proximidades</p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Segunda-feira, 21/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/176.png" alt="Chuvas isoladas nas proximidades" width="48">
+            <p>18.4°C / 23.0°C</p>
+            <p>Chuvas isoladas nas proximidades</p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Terça-feira, 22/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/176.png" alt="Chuvas isoladas nas proximidades" width="48">
+            <p>16.9°C / 24.5°C</p>
+            <p>Chuvas isoladas nas proximidades</p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Quarta-feira, 23/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/119.png" alt="Cloudy " width="48">
+            <p>15.3°C / 28.5°C</p>
+            <p>Cloudy </p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Quinta-feira, 24/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/176.png" alt="Chuvas isoladas nas proximidades" width="48">
+            <p>16.3°C / 27.6°C</p>
+            <p>Chuvas isoladas nas proximidades</p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Sexta-feira, 25/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/302.png" alt="Chuva moderada" width="48">
+            <p>18.0°C / 18.5°C</p>
+            <p>Chuva moderada</p>
+        </div>
+        </div><div class="cidade"><h2>Iguape</h2>
+        <div class="card">
+            <p><strong>Sábado, 19/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/302.png" alt="Chuva moderada" width="48">
+            <p>19.6°C / 28.7°C</p>
+            <p>Chuva moderada</p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Domingo, 20/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/302.png" alt="Chuva moderada" width="48">
+            <p>20.4°C / 22.4°C</p>
+            <p>Chuva moderada</p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Segunda-feira, 21/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/176.png" alt="Chuvas isoladas nas proximidades" width="48">
+            <p>19.7°C / 21.1°C</p>
+            <p>Chuvas isoladas nas proximidades</p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Terça-feira, 22/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/176.png" alt="Chuvas isoladas nas proximidades" width="48">
+            <p>18.8°C / 22.7°C</p>
+            <p>Chuvas isoladas nas proximidades</p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Quarta-feira, 23/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/176.png" alt="Chuvas isoladas nas proximidades" width="48">
+            <p>18.8°C / 24.9°C</p>
+            <p>Chuvas isoladas nas proximidades</p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Quinta-feira, 24/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/176.png" alt="Chuvas isoladas nas proximidades" width="48">
+            <p>17.8°C / 26.9°C</p>
+            <p>Chuvas isoladas nas proximidades</p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Sexta-feira, 25/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/302.png" alt="Chuva moderada" width="48">
+            <p>19.1°C / 19.8°C</p>
+            <p>Chuva moderada</p>
+        </div>
+        </div><div class="cidade"><h2>Ilha Comprida</h2>
+        <div class="card">
+            <p><strong>Sábado, 19/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/113.png" alt="Ensolarado" width="48">
+            <p>20.8°C / 34.9°C</p>
+            <p>Ensolarado</p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Domingo, 20/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/116.png" alt="Partly Cloudy " width="48">
+            <p>20.8°C / 35.3°C</p>
+            <p>Partly Cloudy </p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Segunda-feira, 21/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/113.png" alt="Ensolarado" width="48">
+            <p>21.6°C / 35.9°C</p>
+            <p>Ensolarado</p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Terça-feira, 22/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/116.png" alt="Partly Cloudy " width="48">
+            <p>20.6°C / 32.3°C</p>
+            <p>Partly Cloudy </p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Quarta-feira, 23/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/113.png" alt="Ensolarado" width="48">
+            <p>20.3°C / 34.3°C</p>
+            <p>Ensolarado</p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Quinta-feira, 24/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/176.png" alt="Chuvas isoladas nas proximidades" width="48">
+            <p>20.8°C / 34.4°C</p>
+            <p>Chuvas isoladas nas proximidades</p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Sexta-feira, 25/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/113.png" alt="Ensolarado" width="48">
+            <p>19.7°C / 35.6°C</p>
+            <p>Ensolarado</p>
+        </div>
+        </div>
+    </body>
+    </html>
+    
