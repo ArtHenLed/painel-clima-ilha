@@ -1,83 +1,87 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Previsão do Tempo - Ilha Comprida</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 576px;
-      height: 384px;
-      background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
-      overflow: hidden;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=576, height=384">
+    <title>Previsão do Tempo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            width: 576px;
+            height: 384px;
+            overflow: hidden;
+        }
 
-    .container {
-      transform: scale(0.8);
-      transform-origin: top left;
-      width: 720px;
-      height: 480px;
-    }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            padding: 10px 20px;
+            box-sizing: border-box;
+        }
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-    }
+        .header {
+            text-align: center;
+            margin-top: 5px;
+            position: relative;
+        }
 
-    .header h1 {
-      font-size: 28px;
-      margin: 0;
-    }
+        .header h1 {
+            font-size: 27px; /* aumentado em 50% */
+            margin: 0;
+        }
 
-    .logo {
-      height: 40px;
-    }
+        .logo {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 45px; /* aumentado em 50% */
+        }
 
-    .forecast {
-      display: flex;
-      justify-content: space-around;
-      padding: 0 20px;
-    }
+        .forecast {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
 
-    .day-card {
-      background-color: #1e1e1e;
-      padding: 12px;
-      border-radius: 10px;
-      text-align: center;
-      width: 120px;
-    }
+        .day-card {
+            background-color: #1a1a1a;
+            padding: 12px; /* aumentado */
+            border-radius: 10px;
+            text-align: center;
+            width: 120px; /* aumentado proporcionalmente */
+        }
 
-    .day-card h2 {
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
+        .day-card h2 {
+            font-size: 18px; /* aumentado em 50% */
+            margin: 0 0 10px 0;
+        }
 
-    .day-card img {
-      height: 40px;
-      margin-bottom: 10px;
-    }
+        .day-card img {
+            height: 60px; /* aumentado em 50% */
+            margin-bottom: 12px;
+        }
 
-    .day-card p {
-      margin: 4px 0;
-      font-size: 14px;
-    }
-  </style>
+        .day-card p {
+            margin: 6px 0;
+            font-size: 21px; /* aumentado em 50% */
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>Previsão do Tempo - Ilha Comprida</h1>
-      <img src="marcadagua.jpg" alt="Logo" class="logo" />
+    <div class="container">
+        <div class="header">
+            <h1>Previsão do Tempo - Ilha Comprida</h1>
+            <img src="marcadagua.jpg" alt="Logo" class="logo" />
+        </div>
+        <div class="forecast">
+            {{PREVISAO_TEMPO}}
+        </div>
     </div>
-    <div class="forecast">
-      {{PREVISAO_TEMPO}}
-    </div>
-  </div>
 </body>
 </html>
