@@ -1,87 +1,72 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Previsão do Tempo - Ilha Comprida</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      width: 576px;
-      height: 384px;
-      background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
-      overflow: hidden;
-    }
-
-    .container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      box-sizing: border-box;
-      padding: 10px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 22px;
-    }
-
-    .logo {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      height: 40px;
-    }
-
-    .cards {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 50px;
-    }
-
-    .card {
-      background-color: #333;
-      border-radius: 8px;
-      width: 130px;
-      padding: 5px;
-      box-sizing: border-box;
-      text-align: center;
-    }
-
-    .card p {
-      margin: 4px 0;
-      font-size: 14px;
-    }
-
-    .card img {
-      width: 40px;
-      height: 40px;
-    }
-
-    .data {
-      font-weight: bold;
-      font-size: 13px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Previsão do Tempo - Ilha Comprida</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            padding: 10px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .cidade {
+            margin-top: 10px;
+        }
+        .card {
+            display: inline-block;
+            width: 110px;
+            margin: 5px;
+            padding: 8px;
+            background: #222;
+            border-radius: 6px;
+            text-align: center;
+        }
+        img.logo {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 100px;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
+    <img src="marcadagua.jpg" alt="Logo" class="logo">
     <h1>Previsão do Tempo - Ilha Comprida</h1>
-    <img src="marcadagua.jpg" class="logo" alt="Logo" />
-
-    <div class="cards">
-      <!-- Os cards serão inseridos dinamicamente via gerar_previsao.py -->
-      <!-- Exemplo de estrutura de card (será gerado no script Python):
-      <div class="card">
-        <p class="data">Segunda-feira, 22/04</p>
-        <img src="https://cdn.weatherapi.com/weather/64x64/day/113.png" alt="Ensolarado">
-        <p>21.5°C / 34.8°C</p>
-        <p>Ensolarado</p>
-      </div>
-      -->
+    <div class="cidade">
+        
+        <div class="card">
+            <p><strong>Segunda-feira, 21/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/113.png" alt="Ensolarado" width="42">
+            <p>21.1°C / 35.7°C</p>
+            <p>Ensolarado</p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Terça-feira, 22/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/176.png" alt="Chuvas isoladas nas proximidades" width="42">
+            <p>20.4°C / 33.1°C</p>
+            <p>Chuvas isoladas nas proximidades</p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Quarta-feira, 23/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/176.png" alt="Chuvas isoladas nas proximidades" width="42">
+            <p>20.2°C / 30.8°C</p>
+            <p>Chuvas isoladas nas proximidades</p>
+        </div>
+        
+        <div class="card">
+            <p><strong>Quinta-feira, 24/04</strong></p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/176.png" alt="Chuvas isoladas nas proximidades" width="42">
+            <p>20.3°C / 35.3°C</p>
+            <p>Chuvas isoladas nas proximidades</p>
+        </div>
+        
     </div>
-  </div>
 </body>
 </html>
