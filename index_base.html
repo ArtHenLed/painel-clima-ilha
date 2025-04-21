@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Previsão do Tempo - Ilha Comprida</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            width: 576px;
+            height: 384px;
+            overflow: hidden;
+            transform: scale(1);
+            transform-origin: top left;
+        }
+
+        .container {
+            box-sizing: border-box;
+            padding: 10px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .card {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            width: 23%;
+        }
+
+        .card img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .card p {
+            margin: 4px 0;
+            font-size: 12px;
+        }
+
+        .card strong {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Previsão do Tempo - Ilha Comprida</h1>
+            <img class="logo" src="marcadagua.jpg" alt="Logomarca">
+        </div>
+        <div class="cards">
+            {{PREVISAO_TEMPO}}
+        </div>
+    </div>
+</body>
+</html>
