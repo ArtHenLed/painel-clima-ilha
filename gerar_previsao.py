@@ -36,7 +36,7 @@ TRADUCOES_CLIMA = {
 }
 
 def obter_previsao(cidade_nome):
-    url = f"http://api.weatherapi.com/v1/forecast.json?key={API_KEY}&q={cidade_nome}&days=3&lang=en"
+    url = f"http://api.weatherapi.com/v1/forecast.json?key={API_KEY}&q={cidade_nome}&days=4&lang=en"
     resposta = requests.get(url)
     dados = resposta.json()
 
