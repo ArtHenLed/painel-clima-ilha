@@ -28,19 +28,21 @@
         .header {
             text-align: center;
             margin-top: 5px;
-            position: relative;
         }
 
         .header h1 {
-            font-size: 27px; /* aumentado em 50% */
+            font-size: 27px;
             margin: 0;
         }
 
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin: 8px 0;
+        }
+
         .logo {
-            position: absolute;
-            top: 0;
-            right: 0;
-            height: 45px; /* aumentado em 50% */
+            height: 45px;
         }
 
         .forecast {
@@ -51,25 +53,25 @@
 
         .day-card {
             background-color: #1a1a1a;
-            padding: 12px; /* aumentado */
+            padding: 12px;
             border-radius: 10px;
             text-align: center;
-            width: 120px; /* aumentado proporcionalmente */
+            width: 120px;
         }
 
         .day-card h2 {
-            font-size: 18px; /* aumentado em 50% */
+            font-size: 18px;
             margin: 0 0 10px 0;
         }
 
         .day-card img {
-            height: 60px; /* aumentado em 50% */
+            height: 60px;
             margin-bottom: 12px;
         }
 
         .day-card p {
             margin: 6px 0;
-            font-size: 21px; /* aumentado em 50% */
+            font-size: 21px;
         }
     </style>
 </head>
@@ -77,8 +79,12 @@
     <div class="container">
         <div class="header">
             <h1>Previsão do Tempo - Ilha Comprida</h1>
+        </div>
+
+        <div class="logo-container">
             <img src="marcadagua.jpg" alt="Logo" class="logo" />
         </div>
+
         <div class="forecast">
             {{PREVISAO_TEMPO}}
         </div>
