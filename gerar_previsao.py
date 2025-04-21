@@ -2,9 +2,10 @@ import requests
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-API_KEY = "c9ebb63d5d0e47e19fe151222251904"
-CIDADE = "Ilha Comprida"
-DIAS = 4
+API_KEY = "sua_api_key_aqui"
+CIDADES = {
+    "Ilha Comprida": "Ilha Comprida"
+}
 
 DIAS_SEMANA_PT = {
     "Monday": "Segunda-feira",
@@ -16,62 +17,50 @@ DIAS_SEMANA_PT = {
     "Sunday": "Domingo"
 }
 
-TRADUCOES_CLIMA = {
-    "Sunny": "Ensolarado",
-    "Partly cloudy": "Parcialmente nublado",
-    "Cloudy": "Nublado",
-    "Overcast": "Encoberto",
-    "Mist": "Névoa",
-    "Patchy rain nearby": "Chuvas isoladas nas proximidades",
-    "Patchy rain possible": "Possibilidade de chuva isolada",
-    "Light rain shower": "Pancada de chuva leve",
-    "Moderate rain": "Chuva moderada",
-    "Heavy rain": "Chuva forte",
-    "Showers": "Pancadas de chuva",
-    "Rain": "Chuva",
-}
-
-def traduzir_condicao(condicao):
-    return TRADUCOES_CLIMA.get(condicao, condicao)
-
 def obter_previsao(cidade):
-    url = f"http://api.weatherapi.com/v1/forecast.json?key={API_KEY}&q={cidade}&days={DIAS}&lang=en"
-    response = requests.get(url)
-    if response.status_code != 200:
-        print(f"Erro ao obter dados: {response.text}")
-        return "<p>Erro ao obter previsão</p>"
-
-    dados = response.json()
-    html = ""
-
-    for dia in dados["forecast"]["forecastday"]:
-        data = datetime.strptime(dia["date"], "%Y-%m-%d").strftime("%A, %d/%m")
-        dia_semana_pt = DIAS_SEMANA_PT.get(data.split(',')[0], data.split(',')[0])
-        condicao_en = dia["day"]["condition"]["text"]
-        condicao = traduzir_condicao(condicao_en)
-        icon = dia["day"]["condition"]["icon"]
-        min_temp = round(dia["day"]["mintemp_c"], 1)
-        max_temp = round(dia["day"]["maxtemp_c"], 1)
-
-        html += f"""
-        <div class="card">
-            <strong>{dia_semana_pt}, {data.split(',')[1]}</strong>
-            <img src="{icon}" alt="{condicao}" width="48"><br>
-            <span>{min_temp}°C / {max_temp}°C</span>
-            <p>{condicao}</p>
-        </div>
-        """
-    return html
+    url = f"http://api.weatherapi.com/v1/forecast.json?key={API_KEY}&q={cidade}&days=4&lang=en"
+    resposta = requests.get(url)
+    return resposta.json()
 
 def gerar_html():
+    fuso_horario = ZoneInfo("America/Sao_Paulo")
+    cards_html = ""
+
+    for nome_exibicao, nome_api in CIDADES.items():
+        dados = obter_previsao(nome_api)
+        previsoes = dados["forecast"]["forecastday"]
+        cards = ""
+
+        for dia in previsoes:
+            data = datetime.strptime(dia["date"], "%Y-%m-%d")
+            dia_semana = DIAS_SEMANA_PT[data.strftime("%A")]
+            data_formatada = f"{dia_semana}, {data.day:02d}/{data.month:02d}"
+            icone = dia["day"]["condition"]["icon"]
+            minima = dia["day"]["mintemp_c"]
+            maxima = dia["day"]["maxtemp_c"]
+
+            cards += f"""
+                <div class="card">
+                    <h3>{data_formatada}</h3>
+                    <img src="https:{icone}" alt="Ícone">
+                    <p>{minima:.1f}°C / {maxima:.1f}°C</p>
+                </div>
+            """
+
+        cards_html += f"""
+            <div class="cidade">
+                <h2>Previsão do Tempo - {nome_exibicao}</h2>
+                <div class="cards">{cards}</div>
+            </div>
+        """
+
     with open("index_base.html", "r", encoding="utf-8") as f:
         template = f.read()
 
-    bloco_previsao = obter_previsao(CIDADE)
-    pagina_final = template.replace("{{PREVISAO_TEMPO}}", bloco_previsao)
+    html_final = template.replace("{{PREVISAO_TEMPO}}", cards_html)
 
     with open("index.html", "w", encoding="utf-8") as f:
-        f.write(pagina_final)
+        f.write(html_final)
 
 if __name__ == "__main__":
     gerar_html()
