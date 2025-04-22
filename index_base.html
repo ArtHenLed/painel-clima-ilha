@@ -20,6 +20,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            align-items: center;
             height: 100%;
             padding: 10px 20px;
             box-sizing: border-box;
@@ -36,15 +37,16 @@
         }
 
         .logo {
-            display: block;
-            margin: 5px auto 10px auto;
             height: 45px;
+            margin: 8px auto;
+            display: block;
         }
 
         .forecast {
             display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 5px;
         }
 
         .day-card {
@@ -52,7 +54,7 @@
             padding: 12px;
             border-radius: 10px;
             text-align: center;
-            width: 108px; /* reduzido em 10% */
+            width: 96px;
         }
 
         .day-card h2 {
@@ -61,7 +63,7 @@
         }
 
         .day-card img {
-            height: 60px;
+            height: 78px;
             margin-bottom: 12px;
         }
 
@@ -75,8 +77,8 @@
     <div class="container">
         <div class="header">
             <h1>Previsão do Tempo - Ilha Comprida</h1>
-            <img src="marcadagua.jpg" alt="Logo" class="logo" />
         </div>
+        <img src="marcadagua.jpg" alt="Logo" class="logo" />
         <div class="forecast">
             {{PREVISAO_TEMPO}}
         </div>
