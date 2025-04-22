@@ -17,18 +17,18 @@ def obter_icone(condicao):
         "mist": "🌫️",
         "patchy rain possible": "🌦️",
         "patchy snow possible": "🌨️",
-        "patchy sleet possible": "🌧️",
-        "patchy freezing drizzle possible": "🌧️",
+        "patchy sleet possible": "🌨️",
+        "patchy freezing drizzle possible": "🌨️",
         "thundery outbreaks possible": "⛈️",
         "blowing snow": "🌨️",
-        "blizzard": "🌨️",
+        "blizzard": "❄️",
         "fog": "🌫️",
         "freezing fog": "🌫️",
-        "patchy light drizzle": "🌦️",
-        "light drizzle": "🌦️",
+        "patchy light drizzle": "🌧️",
+        "light drizzle": "🌧️",
         "freezing drizzle": "🌧️",
         "heavy freezing drizzle": "🌧️",
-        "patchy light rain": "🌦️",
+        "patchy light rain": "🌧️",
         "light rain": "🌧️",
         "moderate rain at times": "🌧️",
         "moderate rain": "🌧️",
@@ -45,7 +45,7 @@ def obter_icone(condicao):
         "patchy heavy snow": "🌨️",
         "heavy snow": "🌨️",
         "ice pellets": "🌨️",
-        "light rain shower": "🌧️",
+        "light rain shower": "🌦️",
         "moderate or heavy rain shower": "🌧️",
         "torrential rain shower": "🌧️",
         "light sleet showers": "🌨️",
@@ -59,8 +59,7 @@ def obter_icone(condicao):
         "patchy light snow with thunder": "⛈️",
         "moderate or heavy snow with thunder": "⛈️",
     }
-
-    return icones.get(condicao.lower(), "❓")
+    return icones.get(condicao.lower(), "❔")
 
 def buscar_previsao():
     resposta = requests.get(URL)
@@ -69,34 +68,33 @@ def buscar_previsao():
 
 def gerar_html():
     dados = buscar_previsao()
-    previsoes = dados["forecast"]["forecastday"]
+    dias = dados["forecast"]["forecastday"]
 
-    cards = ""
-    for dia in previsoes:
-        data = datetime.strptime(dia["date"], "%Y-%m-%d")
-        dia_semana = data.strftime("%A")
-        dia_formatado = data.strftime("%d/%m")
+    html = ""
+    for dia in dias:
+        data_obj = datetime.strptime(dia["date"], "%Y-%m-%d")
+        data_formatada = data_obj.strftime("%A, %d/%m").capitalize()
+        condicao = dia["day"]["condition"]["text"]
+        icone = obter_icone(condicao)
+        temp_min = dia["day"]["mintemp_c"]
+        temp_max = dia["day"]["maxtemp_c"]
 
-        icone_url = f"https:{dia['day']['condition']['icon']}"
-        icone = obter_icone(dia['day']['condition']['text'])
-        temp_min = round(dia["day"]["mintemp_c"], 1)
-        temp_max = round(dia["day"]["maxtemp_c"], 1)
-
-        cards += f"""
+        card = f"""
         <div class="day-card">
-            <h2>{data.strftime('%A').capitalize()}, {data.strftime('%d/%m')}</h2>
-            <img src="{icone_url}" alt="{icone}" />
-            <p>{temp_min}°C / {temp_max}°C</p>
+            <h2>{data_formatada}</h2>
+            <img src="https:{dia["day"]["condition"]["icon"]}" alt="{condicao}">
+            <p>{temp_min:.1f}°C / {temp_max:.1f}°C</p>
         </div>
         """
+        html += card
 
-    with open("index_base.html", "r", encoding="utf-8") as arquivo_base:
-        html_base = arquivo_base.read()
+    return html
 
-    html_final = html_base.replace("{{PREVISAO_TEMPO}}", cards)
-
-    with open("index.html", "w", encoding="utf-8") as saida:
-        saida.write(html_final)
+def salvar_html(conteudo):
+    template = Path("index_base.html").read_text(encoding="utf-8")
+    resultado = template.replace("{{PREVISAO_TEMPO}}", conteudo)
+    Path("index.html").write_text(resultado, encoding="utf-8")
 
 if __name__ == "__main__":
-    gerar_html()
+    html_previsao = gerar_html()
+    salvar_html(html_previsao)
