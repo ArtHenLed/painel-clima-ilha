@@ -8,8 +8,10 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: black;
-            color: white;
+            background-image: url("ilha_comprida_bg_cortada.jpg");
+            background-size: cover;
+            background-position: center;
+            color: black;
             font-family: Arial, sans-serif;
             width: 576px;
             height: 384px;
@@ -20,7 +22,6 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            align-items: center;
             height: 100%;
             padding: 10px 20px;
             box-sizing: border-box;
@@ -37,24 +38,23 @@
         }
 
         .logo {
-            height: 45px;
-            margin: 8px auto;
             display: block;
+            margin: 6px auto 0 auto;
+            height: 90px;
         }
 
         .forecast {
             display: flex;
-            justify-content: center;
-            gap: 10px;
+            justify-content: space-between;
             margin-bottom: 5px;
         }
 
         .day-card {
-            background-color: #1a1a1a;
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 12px;
             border-radius: 10px;
             text-align: center;
-            width: 96px;
+            width: 84px; /* Reduzido em 30% */
         }
 
         .day-card h2 {
@@ -63,7 +63,7 @@
         }
 
         .day-card img {
-            height: 78px;
+            height: 40px;
             margin-bottom: 12px;
         }
 
@@ -77,8 +77,8 @@
     <div class="container">
         <div class="header">
             <h1>Previsão do Tempo - Ilha Comprida</h1>
+            <img src="marcadagua.jpg" alt="Logo" class="logo" />
         </div>
-        <img src="marcadagua.jpg" alt="Logo" class="logo" />
         <div class="forecast">
             {{PREVISAO_TEMPO}}
         </div>
