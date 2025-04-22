@@ -4,7 +4,9 @@ from zoneinfo import ZoneInfo
 
 API_KEY = "c9ebb63d5d0e47e19fe151222251904"
 CIDADE = "Ilha Comprida"
-DIAS = 4
+NOME_CIDADE = "Ilha Comprida"
+INDEX_BASE = "index_base.html"
+INDEX_FINAL = "index.html"
 
 DIAS_SEMANA_PT = {
     "Monday": "Segunda-feira",
@@ -16,39 +18,59 @@ DIAS_SEMANA_PT = {
     "Sunday": "Domingo"
 }
 
-def obter_previsao(cidade):
-    url = f"http://api.weatherapi.com/v1/forecast.json?key={API_KEY}&q={cidade}&days={DIAS}&lang=en"
+def buscar_previsao(cidade):
+    url = f"https://api.openweathermap.org/data/2.5/forecast?q={cidade}&units=metric&appid={API_KEY}&lang=pt_br"
     resposta = requests.get(url)
-    dados = resposta.json()
-    return dados["forecast"]["forecastday"]
+    resposta.raise_for_status()
+    return resposta.json()
 
-def gerar_html():
-    previsoes = obter_previsao(CIDADE)
-    html_cards = ""
+def extrair_dados(dados):
+    zona = ZoneInfo("America/Sao_Paulo")
+    hoje = datetime.now(tz=zona).date()
+    dias_extraidos = {}
+    
+    for item in dados["list"]:
+        datahora = datetime.fromtimestamp(item["dt"], tz=zona)
+        data = datahora.date()
+        hora = datahora.hour
 
-    for dia in previsoes:
-        data = datetime.strptime(dia["date"], "%Y-%m-%d")
-        dia_semana = DIAS_SEMANA_PT[data.strftime("%A")]
-        data_formatada = f"{dia_semana}, {data.day:02d}/{data.month:02d}"
-        icone = dia["day"]["condition"]["icon"]
-        minima = round(dia["day"]["mintemp_c"], 1)
-        maxima = round(dia["day"]["maxtemp_c"], 1)
+        if data <= hoje:
+            continue
+        if hora != 12:
+            continue
+        if data not in dias_extraidos:
+            dias_extraidos[data] = {
+                "data_formatada": f"{DIAS_SEMANA_PT[datahora.strftime('%A')]}, {data.strftime('%d/%m')}",
+                "icone": item["weather"][0]["icon"],
+                "min": round(item["main"]["temp_min"], 1),
+                "max": round(item["main"]["temp_max"], 1),
+            }
+        if len(dias_extraidos) == 4:
+            break
 
-        html_cards += f"""
+    return list(dias_extraidos.values())
+
+def gerar_html(dias):
+    cards = ""
+    for dia in dias:
+        card = f"""
         <div class="day-card">
-            <h2>{data_formatada}</h2>
-            <img src="https:{icone}" alt="Ícone">
-            <p>{minima:.1f}°C / {maxima:.1f}°C</p>
+            <h2>{dia["data_formatada"]}</h2>
+            <img src="https://openweathermap.org/img/wn/{dia["icone"]}@2x.png" alt="ícone clima">
+            <p>{dia["min"]}°C / {dia["max"]}°C</p>
         </div>
         """
+        cards += card
 
-    with open("index_base.html", "r", encoding="utf-8") as f:
+    with open(INDEX_BASE, "r", encoding="utf-8") as f:
         template = f.read()
 
-    html_final = template.replace("{{PREVISAO_TEMPO}}", html_cards)
+    html_final = template.replace("{{PREVISAO_TEMPO}}", cards)
 
-    with open("index.html", "w", encoding="utf-8") as f:
+    with open(INDEX_FINAL, "w", encoding="utf-8") as f:
         f.write(html_final)
 
 if __name__ == "__main__":
-    gerar_html()
+    dados = buscar_previsao(CIDADE)
+    dias = extrair_dados(dados)
+    gerar_html(dias)
