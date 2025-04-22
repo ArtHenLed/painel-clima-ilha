@@ -10,11 +10,11 @@
             padding: 0;
             width: 576px;
             height: 384px;
+            font-family: Arial, sans-serif;
             background-image: url('ilha_comprida_bg_cortada.jpg');
             background-size: cover;
             background-position: center;
             color: black;
-            font-family: Arial, sans-serif;
             overflow: hidden;
         }
 
@@ -29,7 +29,7 @@
 
         .header {
             text-align: center;
-            margin-top: 5px;
+            margin-top: 0;
         }
 
         .header h1 {
@@ -39,27 +39,29 @@
 
         .logo {
             display: block;
-            margin: 10px auto;
-            height: 90px; /* dobro do original */
+            margin: 5px auto 0 auto;
+            height: 90px; /* dobrado */
         }
 
         .forecast {
             display: flex;
             justify-content: space-between;
-            margin-top: auto;
+            margin-bottom: 10px;
         }
 
         .day-card {
-            background-color: rgba(255, 255, 255, 0.85);
-            padding: 12px;
+            background-color: rgba(255, 255, 255, 0.75);
+            padding: 10px;
             border-radius: 10px;
             text-align: center;
-            width: 84px; /* Reduzido 30% da largura original (~120px) */
+            width: 84px; /* 30% menor que 120px */
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
         }
 
         .day-card h2 {
             font-size: 18px;
             margin: 0 0 10px 0;
+            color: black;
         }
 
         .day-card img {
@@ -68,8 +70,9 @@
         }
 
         .day-card p {
-            margin: 6px 0;
             font-size: 14px;
+            margin: 6px 0;
+            color: black;
         }
     </style>
 </head>
