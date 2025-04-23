@@ -56,7 +56,7 @@
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            gap: 80px; /* afastamento maior entre cards - DOBRADO */
+            /* gap: 80px;  REMOVIDO para máxima compatibilidade */
             margin-bottom: 25px;
         }
 
@@ -67,6 +67,10 @@
             text-align: center;
             width: 84px; /* Reduzido 30% */
             box-shadow: 0 0 6px rgba(0,0,0,0.18);
+            margin-right: 80px; /* Novo: espaço entre cards */
+        }
+        .day-card:last-child {
+            margin-right: 0; /* Remove margem do último card */
         }
         .day-card h2 {
             color: #222;
