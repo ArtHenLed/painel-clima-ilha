@@ -5,7 +5,7 @@ from pathlib import Path
 # Configurações
 API_KEY = "9580cc1df9214e139cd160649252304"
 CIDADE = "Ilha Comprida"
-URL = f"https://api.weatherapi.com/v1/forecast.json?q={CIDADE}&days=3&lang=pt&key={API_KEY}"
+URL = f"https://api.weatherapi.com/v1/forecast.json?q={CIDADE}&days=4&lang=pt&key={API_KEY}"
 
 def buscar_previsao():
     resposta = requests.get(URL)
