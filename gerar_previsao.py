@@ -39,11 +39,12 @@ def gerar_html():
         temp_min = round(dia["day"]["mintemp_c"], 1)
         temp_max = round(dia["day"]["maxtemp_c"], 1)
 
+        # Aqui a linha correta:
         card = f"""
         <div class="day-card">
             <h2>{data_formatada}</h2>
             <img src="{icone_url}" alt="Ícone do clima" />
-            <p>{temp_min}°C / {temp_max}°C</p>
+            <div class="temp">{temp_min}°C / {temp_max}°C</div>
         </div>
         """
         cards.append(card)
