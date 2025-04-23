@@ -8,8 +8,9 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: black;
-            color: white;
+            background: url('ilha_comprida_bg_cortada.jpg') no-repeat center center;
+            background-size: cover;
+            color: black;
             font-family: Arial, sans-serif;
             width: 576px;
             height: 384px;
@@ -37,22 +38,23 @@
 
         .logo {
             display: block;
-            margin: 5px auto 10px auto;
-            height: 45px;
+            margin: 5px auto;
+            height: 90px; /* dobrado */
         }
 
         .forecast {
             display: flex;
             justify-content: space-between;
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
         .day-card {
-            background-color: #1a1a1a;
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 12px;
             border-radius: 10px;
             text-align: center;
-            width: 108px; /* reduzido em 10% */
+            width: 84px; /* reduzido em 30% */
+            color: black;
         }
 
         .day-card h2 {
@@ -61,13 +63,13 @@
         }
 
         .day-card img {
-            height: 60px;
-            margin-bottom: 12px;
+            height: 40px;
+            margin-bottom: 10px;
         }
 
         .day-card p {
             margin: 6px 0;
-            font-size: 21px;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -80,27 +82,23 @@
         <div class="forecast">
             
         <div class="day-card">
-            <h2>Terça-feira, 22/04</h2>
-            <img src="https://cdn.weatherapi.com/weather/64x64/day/116.png" alt="Ícone">
-            <p>21.2°C / 34.2°C</p>
-        </div>
-        
-        <div class="day-card">
             <h2>Quarta-feira, 23/04</h2>
-            <img src="https://cdn.weatherapi.com/weather/64x64/day/176.png" alt="Ícone">
-            <p>21.0°C / 31.7°C</p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/176.png" alt="Ícone do clima" />
+            <p>21.2°C / 35.1°C</p>
         </div>
         
+
         <div class="day-card">
             <h2>Quinta-feira, 24/04</h2>
-            <img src="https://cdn.weatherapi.com/weather/64x64/day/113.png" alt="Ícone">
-            <p>19.6°C / 34.7°C</p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/116.png" alt="Ícone do clima" />
+            <p>21.0°C / 31.9°C</p>
         </div>
         
+
         <div class="day-card">
             <h2>Sexta-feira, 25/04</h2>
-            <img src="https://cdn.weatherapi.com/weather/64x64/day/113.png" alt="Ícone">
-            <p>19.4°C / 35.4°C</p>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/176.png" alt="Ícone do clima" />
+            <p>20.9°C / 31.7°C</p>
         </div>
         
         </div>
