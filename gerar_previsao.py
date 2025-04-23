@@ -13,14 +13,12 @@ def buscar_previsao():
     return resposta.json()
 
 def obter_icone(condicao):
-    # Usa o ícone da WeatherAPI (URL já vem no JSON)
     return condicao["icon"]
 
 def gerar_html():
     dados = buscar_previsao()
     previsoes = dados["forecast"]["forecastday"]
     cards = []
-
     for dia in previsoes:
         data_obj = datetime.strptime(dia["date"], "%Y-%m-%d")
         dia_semana = data_obj.strftime("%A")
@@ -39,7 +37,6 @@ def gerar_html():
         temp_min = round(dia["day"]["mintemp_c"], 1)
         temp_max = round(dia["day"]["maxtemp_c"], 1)
 
-        # Aqui a linha correta:
         card = f"""
         <div class="day-card">
             <h2>{data_formatada}</h2>
@@ -48,16 +45,13 @@ def gerar_html():
         </div>
         """
         cards.append(card)
-
     return "\n".join(cards)
 
 def main():
-    # Caminhos dos arquivos
     base_path = Path(__file__).parent
     html_base_path = base_path / "index_base.html"
     html_saida_path = base_path / "index.html"
 
-    # Lê o HTML base e insere as previsões
     with open(html_base_path, "r", encoding="utf-8") as f:
         html_base = f.read()
 
