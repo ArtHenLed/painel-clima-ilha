@@ -8,83 +8,90 @@
         body {
             margin: 0;
             padding: 0;
-            background: black;
-            font-family: Arial, sans-serif;
             width: 576px;
             height: 384px;
             overflow: hidden;
+            font-family: Arial, sans-serif;
+            background: black;
         }
+
+        .background {
+            position: absolute;
+            width: 576px;
+            height: 384px;
+            top: 0; left: 0;
+            z-index: 0;
+        }
+
         .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            height: 100%;
-            box-sizing: border-box;
+            justify-content: space-between;
+        }
+
+        .header {
+            text-align: center;
+            margin-top: 12px;
         }
         .titulo {
             color: #000;
-            font-size: 2.3em;
+            font-size: 36px;
             font-weight: bold;
-            margin-top: 28px;
-            text-shadow: 1px 1px 5px #fff, 2px 2px 10px #fff;
+            text-shadow: 2px 2px 6px #fff, 0 0 8px #fff;
+            margin-bottom: 0px;
+            margin-top: 0px;
         }
         .logo {
-            margin-top: 2px;
-            margin-bottom: 8px;
-            height: 58.5px; /* 45px + 30% = 58.5px */
             display: block;
+            margin: 0 auto;
+            height: 58.5px; /* 45px + 30% */
+            margin-bottom: 10px;
         }
-        .bg-img {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            transform: translateX(-50%);
-            width: 576px;
-            height: 384px;
-            object-fit: cover;
-            z-index: 0;
-        }
+
         .forecast {
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            width: 100%;
-            gap: 30px; /* Maior espaçamento entre os cards */
-            position: absolute;
-            bottom: 32px;
-            z-index: 1;
+            gap: 40px; /* afastamento maior entre cards */
+            margin-bottom: 25px;
         }
+
         .day-card {
             background-color: rgba(255,255,255,0.85);
-            padding: 14px 10px;
-            border-radius: 13px;
+            padding: 14px;
+            border-radius: 14px;
             text-align: center;
-            width: 90px;
-            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+            width: 84px; /* Reduzido 30% */
+            box-shadow: 0 0 6px rgba(0,0,0,0.18);
         }
         .day-card h2 {
-            color: #000;
+            color: #222;
             font-size: 18px;
-            margin: 0 0 7px 0;
-            font-weight: bold;
+            margin: 0 0 8px 0;
         }
         .day-card img {
-            height: 40px;
+            height: 60px; /* Tamanho original dos ícones */
             margin-bottom: 10px;
         }
         .day-card .temp {
-            font-size: 24px; /* Aumentado em 30% (original 18px) */
-            color: #000;
+            color: #222;
+            font-size: 27px; /* Temperatura aumentada em 30% */
             font-weight: bold;
-            margin: 8px 0 0 0;
+            margin-top: 5px;
         }
     </style>
 </head>
 <body>
-    <img src="ilha_comprida_bg_cortada.jpg" alt="Fundo" class="bg-img" />
+    <img class="background" src="ilha_comprida_bg_cortada.jpg" alt="Fundo Ilha Comprida" />
     <div class="container">
-        <div class="titulo">Ilha Comprida</div>
-        <img src="marcadagua.jpg" alt="Logo" class="logo" />
+        <div class="header">
+            <div class="titulo">Ilha Comprida</div>
+            <img src="marcadagua.jpg" alt="Logo" class="logo" />
+        </div>
         <div class="forecast">
             
         <div class="day-card">
