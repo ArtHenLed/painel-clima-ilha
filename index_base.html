@@ -3,83 +3,88 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=576, height=384">
-    <title>Previsão do Tempo - Ilha Comprida</title>
+    <title>Previsão do Tempo</title>
     <style>
         body {
             margin: 0;
             padding: 0;
+            background: black;
+            font-family: Arial, sans-serif;
             width: 576px;
             height: 384px;
-            font-family: Arial, sans-serif;
             overflow: hidden;
-            color: black;
-            background: url('ilha_comprida_bg_cortada.jpg') center center no-repeat;
-            background-size: cover;
-            background-position: center;
         }
         .container {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            align-items: center;
             height: 100%;
-            padding: 10px 20px 10px 20px;
             box-sizing: border-box;
         }
-        .header {
-            text-align: center;
-            margin-top: 8px;
-        }
-        .header h1 {
-            font-size: 28px;
-            margin: 0 0 6px 0;
+        .titulo {
+            color: #000;
+            font-size: 2.3em;
             font-weight: bold;
-            color: black;
-            text-shadow: 1px 1px 6px #ffffffb3;
+            margin-top: 28px;
+            text-shadow: 1px 1px 5px #fff, 2px 2px 10px #fff;
         }
         .logo {
+            margin-top: 2px;
+            margin-bottom: 8px;
+            height: 58.5px; /* 45px + 30% = 58.5px */
             display: block;
-            margin: 0 auto 12px auto;
-            height: 80px;
+        }
+        .bg-img {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 576px;
+            height: 384px;
+            object-fit: cover;
+            z-index: 0;
         }
         .forecast {
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            gap: 28px;
-            margin-top: 14px;
+            width: 100%;
+            gap: 30px; /* Maior espaçamento entre os cards */
+            position: absolute;
+            bottom: 32px;
+            z-index: 1;
         }
         .day-card {
-            background-color: rgba(255,255,255,0.88);
-            color: black;
-            padding: 12px 6px;
-            border-radius: 12px;
+            background-color: rgba(255,255,255,0.85);
+            padding: 14px 10px;
+            border-radius: 13px;
             text-align: center;
-            width: 95px;
-            box-shadow: 2px 2px 10px #0002;
+            width: 90px;
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
         }
         .day-card h2 {
-            font-size: 17px;
-            margin: 0 0 10px 0;
+            color: #000;
+            font-size: 18px;
+            margin: 0 0 7px 0;
             font-weight: bold;
-            color: black;
         }
         .day-card img {
             height: 40px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
-        .day-card p {
-            margin: 6px 0;
-            font-size: 18px;
-            color: black;
+        .day-card .temp {
+            font-size: 24px; /* Aumentado em 30% (original 18px) */
+            color: #000;
+            font-weight: bold;
+            margin: 8px 0 0 0;
         }
     </style>
 </head>
 <body>
+    <img src="ilha_comprida_bg_cortada.jpg" alt="Fundo" class="bg-img" />
     <div class="container">
-        <div class="header">
-            <h1>Ilha Comprida</h1>
-            <img src="marcadagua.jpg" alt="Logo MIDIAH" class="logo" />
-        </div>
+        <div class="titulo">Ilha Comprida</div>
+        <img src="marcadagua.jpg" alt="Logo" class="logo" />
         <div class="forecast">
             {{PREVISAO_TEMPO}}
         </div>
