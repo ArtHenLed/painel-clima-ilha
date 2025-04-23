@@ -3,7 +3,7 @@ from datetime import datetime
 from pathlib import Path
 
 # Configurações
-API_KEY = "c9ebb63d5d0e47e19fe15122225190481"
+API_KEY = "9580cc1df9214e139cd160649252304"
 CIDADE = "Ilha Comprida"
 URL = f"https://api.weatherapi.com/v1/forecast.json?q={CIDADE}&days=3&lang=pt&key={API_KEY}"
 
