@@ -10,11 +10,10 @@
             padding: 0;
             width: 576px;
             height: 384px;
-            font-family: Arial, sans-serif;
-            background-image: url('ilha_comprida_bg_cortada.jpg');
+            background: url('ilha_comprida_bg_cortada.jpg') no-repeat center center;
             background-size: cover;
-            background-position: center;
             color: black;
+            font-family: Arial, sans-serif;
             overflow: hidden;
         }
 
@@ -22,56 +21,52 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            align-items: center;
             height: 100%;
             padding: 10px 20px;
             box-sizing: border-box;
         }
 
-        .header {
-            text-align: center;
-            margin-top: 0;
-        }
-
         .header h1 {
             font-size: 27px;
             margin: 0;
+            text-align: center;
         }
 
         .logo {
-            display: block;
-            margin: 5px auto 0 auto;
             height: 90px; /* dobrado */
+            margin: 5px 0 15px 0;
         }
 
         .forecast {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
+            gap: 10px;
+            margin-bottom: 5px;
         }
 
         .day-card {
-            background-color: rgba(255, 255, 255, 0.75);
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 10px;
             border-radius: 10px;
             text-align: center;
-            width: 84px; /* 30% menor que 120px */
-            box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+            width: 90px; /* reduzido em 30% */
+            box-sizing: border-box;
         }
 
         .day-card h2 {
             font-size: 18px;
             margin: 0 0 10px 0;
-            color: black;
         }
 
         .day-card img {
-            height: 40px; /* tamanho original */
+            height: 40px;
             margin-bottom: 10px;
         }
 
         .day-card p {
-            font-size: 14px;
             margin: 6px 0;
+            font-size: 18px;
             color: black;
         }
     </style>
