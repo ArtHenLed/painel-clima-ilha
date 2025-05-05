@@ -5,7 +5,7 @@ from pathlib import Path
 # Configurações
 API_KEY = "9580cc1df9214e139cd160649252304"
 CIDADE = "Ilha Comprida"
-URL = f"https://api.weatherapi.com/v1/forecast.json?q={CIDADE}&days=4&lang=pt&key={API_KEY}"
+URL = f"https://api.weatherapi.com/v1/forecast.json?q={CIDADE}&days=2&lang=pt&key={API_KEY}"
 
 def buscar_previsao():
     resposta = requests.get(URL)
@@ -19,20 +19,21 @@ def gerar_html():
     dados = buscar_previsao()
     previsoes = dados["forecast"]["forecastday"]
     cards = []
+    
     for dia in previsoes:
         data_obj = datetime.strptime(dia["date"], "%Y-%m-%d")
         dia_semana = data_obj.strftime("%A")
         dia_semana_pt = {
-            "Monday": "Segunda-feira",
-            "Tuesday": "Terça-feira",
-            "Wednesday": "Quarta-feira",
-            "Thursday": "Quinta-feira",
-            "Friday": "Sexta-feira",
+            "Monday": "Segunda",
+            "Tuesday": "Terça",
+            "Wednesday": "Quarta",
+            "Thursday": "Quinta",
+            "Friday": "Sexta",
             "Saturday": "Sábado",
             "Sunday": "Domingo"
         }[dia_semana]
 
-        data_formatada = f'{dia_semana_pt}, {data_obj.strftime("%d/%m")}'
+        data_formatada = f"{dia_semana_pt} <br> {data_obj.strftime('%d/%m')}"
         icone_url = "https:" + obter_icone(dia["day"]["condition"])
         temp_min = round(dia["day"]["mintemp_c"], 1)
         temp_max = round(dia["day"]["maxtemp_c"], 1)
@@ -45,6 +46,7 @@ def gerar_html():
         </div>
         """
         cards.append(card)
+    
     return "\n".join(cards)
 
 def main():
