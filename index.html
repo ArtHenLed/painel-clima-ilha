@@ -49,15 +49,14 @@
         .logo {
             display: block;
             margin: 0 auto;
-            height: 120px;
+            height: 120px; /* AUMENTADO para 120px */
             margin-bottom: 10px;
         }
 
         .forecast {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: flex-end;
-            gap: 20px; /* <<< AQUI ESTÁ O ESPAÇAMENTO ENTRE OS CARDS */
             margin-bottom: 25px;
             padding: 0 14px;
             width: 100%;
@@ -99,16 +98,23 @@
         <div class="forecast">
             
         <div class="day-card">
-            <h2>Segunda <br> 05/05</h2>
+            <h2>Segunda-feira, 05/05</h2>
             <img src="https://cdn.weatherapi.com/weather/64x64/day/302.png" alt="Ícone do clima" />
             <div class="temp">21.0°C / 27.5°C</div>
         </div>
         
 
         <div class="day-card">
-            <h2>Terça <br> 06/05</h2>
+            <h2>Terça-feira, 06/05</h2>
             <img src="https://cdn.weatherapi.com/weather/64x64/day/302.png" alt="Ícone do clima" />
             <div class="temp">21.0°C / 26.9°C</div>
+        </div>
+        
+
+        <div class="day-card">
+            <h2>Quarta-feira, 07/05</h2>
+            <img src="https://cdn.weatherapi.com/weather/64x64/day/302.png" alt="Ícone do clima" />
+            <div class="temp">20.9°C / 27.4°C</div>
         </div>
         
         </div>
